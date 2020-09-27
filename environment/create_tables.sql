@@ -9,12 +9,27 @@ create or replace table user_daily_extract
  extract_date integer
 );
 
-use schema stg_pageviews;
 create or replace table user_history_fact
 (
  id integer,
  postcode varchar,
  extract_date integer
+);
+
+use schema stg_pageviews;
+
+create or replace table pageview_extract
+(
+ user_id integer,
+ url varchar,
+ pageview_datetime timestamp_ntz
+);
+
+create or replace table pageview_history_fact
+(
+ user_id integer,
+ url varchar,
+ pageview_datetime timestamp_ntz
 );
 
 use schema datamart;
