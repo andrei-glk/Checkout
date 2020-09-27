@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
 import pandas as pd
 from numpy.random import randint
 from numpy.random import seed
@@ -15,12 +8,13 @@ from datetime import datetime, timedelta
 import csv
 import random
 
-#df_postcodes = pd.read_csv('postcodes.csv')
 random_postcodes = ['KY5 0YR','BL9 6HE','SL3 3AA','WF5 8PU','N22 5PT']
 nbr_users  = 50 # number of users 
 user_id_list = randint(1001, 9999, nbr_users) # generate a random user_id on the interval [1000,9999]
 
+# 
 def insert_row(df, row):
+    """ Inserts a row into an existing pandas dataframe  """
     insert_loc = df.index.max()
     if pd.isna(insert_loc):
         df.loc[0] = row
@@ -29,6 +23,7 @@ def insert_row(df, row):
         
         
 def RandomTimestamp(start, end):
+    """ The function picks a random datetime between two specified dates """
     dts = (end - start).total_seconds()
     return start + pd.Timedelta(np.random.uniform(0, dts), 's')
             
@@ -62,7 +57,7 @@ def generate_pageview_hourly_extract(user_list,offset_date = 0,offset_hour = 0):
     
 # seed random number generator
 seed(1)
-
+# main program
 for offset_date in range(-29,1):
     # this generates a daily user extract (number of user provided)
     generate_user_daily_extract(user_id_list,5,offset_date)
