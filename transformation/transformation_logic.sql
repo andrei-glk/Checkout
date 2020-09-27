@@ -1,3 +1,7 @@
+use warehouse compute_wh;
+use database demo_db;
+use schema transform_all;
+
 create or replace view transform_all.v_pageviews as 
 select 
   id,
